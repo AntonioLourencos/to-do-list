@@ -83,7 +83,6 @@ header nav li:hover {
   margin: 5px;
   font-size: 1.2rem;
   outline: none;
-  /* background-color: var(--color-input-primary); */
   background-color: var(--color-shape);
   color: inherit;
   transition: 300ms;
@@ -101,7 +100,6 @@ header nav li:hover {
   border-radius: 14px;
   font-size: 1.2rem;
   outline: none;
-  /* background-color: var(--color-input-primary); */
   background-color: var(--color-shape);
   color: inherit;
   transition: 300ms;
@@ -125,8 +123,6 @@ header nav li:hover {
   background-color: var(--color-shape);
   margin: 10px 0px 15px 0px;
   min-height: 220px;
-  /* max-height: 220px;
-  overflow: auto; */
 }
 
 .Works-header {
@@ -191,7 +187,6 @@ header nav li:hover {
   border-radius: 10px;
   outline: none;
   font-size: 1rem;
-  /* background-color: transparent; */
 }
 
 .mywork-finish{
