@@ -76,6 +76,11 @@ header nav li:hover {
   justify-content: center;
 }
 
+#inputs{
+  display: flex;
+  flex-direction: column;
+}
+
 .input-to-do-list {
   padding: 10px 12px;
   border: none;
@@ -154,6 +159,9 @@ header nav li:hover {
   border-radius: 5px;
 }
 
+.mywork-finish-c{
+  border-bottom: 2px solid var(--color-green);
+}
 
 .mywork-header{
   display: flex;
@@ -191,6 +199,13 @@ header nav li:hover {
 
 .mywork-finish{
   text-decoration: line-through !important;
+}
+
+.mywork-footer{
+  display: flex;
+  justify-content: flex-end;
+  margin: 3px;
+  font-size: small;
 }
 
 footer {
