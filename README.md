@@ -4,7 +4,7 @@
 
 <p>To do List, is a web management tool in which you can create, edit and mark if the tariff has been completed.</p>
 
-<img src="https://i.imgur.com/BumSSbO.png" alt=""/>
+<img src="https://i.imgur.com/8dwDf2Z.png" alt=""/>
 
 
 <hr />
