@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
+  <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>To do List</title>
@@ -9,105 +8,121 @@
     <link rel="stylesheet" href="/src/styles/main.css" />
 
     <link rel="preconnect" href="https://fonts.gstatic.com" />
-    <link href="https://fonts.googleapis.com/css2?family=Arvo:wght@700&family=Indie+Flower&display=swap"
-        rel="stylesheet" />
-</head>
+    <link href="https://fonts.googleapis.com/css2?family=Arvo:wght@700&family=Indie+Flower&display=swap" rel="stylesheet" />
+  </head>
 
-<body>
+  <body>
     <header>
-        <span><a href="#">To Do List</a></span>
-        <nav>
-            <li><a href="https://github.com/AntonioLourencos/to-do-list">Project</a></li>
-        </nav>
+      <span><a href="#">To Do List</a></span>
+      <nav>
+        <li><a href="https://github.com/AntonioLourencos/to-do-list">Project</a></li>
+      </nav>
     </header>
 
-    <main id='main'>
-        <section class="container-to-do-list">
-            <div id="inputs">
-                <input type="text" id="NewItemTittle" class="input-to-do-list" placeholder="Tittle - Clean the house"
-                    maxlength="16" minlength="3" />
-                <input type="text" id="newItem" class="input-to-do-list" placeholder="Content -Tidy up room"
-                    maxlength="32" minlength="3" />
-            </div>
-            <div>
-                <button class="input-to-do-list-add" id="ButtonAdd">Save</button>
-            </div>
-        </section>
+    <main id="main">
+      <section class="container-to-do-list">
+        <div id="inputs">
+          <input type="text" id="NewItemTittle" class="input-to-do-list" placeholder="Tittle - Clean the house" maxlength="16" minlength="3" />
+          <input type="text" id="newItem" class="input-to-do-list" placeholder="Content -Tidy up room" maxlength="32" minlength="3" />
+        </div>
+        <div>
+          <button class="input-to-do-list-add" id="ButtonAdd">Save</button>
+        </div>
+      </section>
 
-        <section id="works-to-do-list" class="works-to-do-list">
-            <div class="Works-header">
-                <span class="works-tittle">My list</span>
-
-            </div>
-            <section id="works"></section>
-        </section>
-
-        <section class="alerts-container">
-
-            <div class="alert-container" id="noHaveContent">
-                <section class="alert">
-                    <div class="alert-tittle">
-                        <h1>Import!</h1>
-                    </div>
-                    <div class="alert-content">
-                        <p>You didn't fill in all the fields, make sure.</p>
-                    </div>
-                    <div class="alert-footer">
-                        <button onclick="CloseAlertNoHave()">Close</button>
-                    </div>
-                </section>
-            </div>
-
-            <div class="alert-container" id="DeleteItem">
-                <section class="alert">
-                    <div class="alert-tittle">
-                        <h1>Delete item</h1>
-                    </div>
-                    <div class="alert-content">
-                        <p>Are you sure? This is a long time</p>
-                    </div>
-                    <div class="alert-footer">
-                        <button id="delete">Delete</button>
-                        <button onclick="CloseDeleteItem()">Close</button>
-                    </div>
-                </section>
-            </div>
-
-            <div class="alert-container" id="editItem">
-                <section class="alert">
-                    <div class="alert-tittle">
-                        <h1>Edit item</h1>
-                    </div>
-                    <div class="alert-content">
-                        <span>Tittle:</span>
-                        <input type="text" id="EditItemTittle" class="input-to-do-list"
-                            placeholder="Tittle - Clean the house" maxlength="16" minlength="3" />
-                        <span>Content:</span>
-                        <input type="text" id="EditItemText" class="input-to-do-list"
-                            placeholder="Content -Tidy up room" maxlength="32" minlength="3" />
-                    </div>
-                    <div class="alert-footer">
-                        <button id="saveEdit">Save</button>
-                        <button onclick="CloseEdit()">Close</button>
-                    </div>
-                </section>
-            </div>
-
-        </section>
-
-
+      <section id="tables" class="tables">
+        <div class="tables-header">
+          <div class="tables-select" id="tables-select">
+            <span id="mylist">My List</span>
+          </div>
+          <button class="tables-settings" id="tables-settings">Settings</button>
+        </div>
+        <section id="mylist-works" class="works"></section>
+      </section>
     </main>
 
-    <footer>
-        <div>
-            <span>If you have any questions, <b><a
-                        href="https://github.com/AntonioLourencos/to-do-list/blob/master/README.md">visit</a></b> our
-                documentation, we have an answers
-                :)</span>
-            <span>Page developed by: <b><a href="https://github.com/AntonioLourencos">Antonio Lourenço</a></b>.</span>
+    <section id="modals" class="modals">
+      <section class="modal" id="settingsTable-Modal">
+        <div class="settingsTable-Modal">
+          <div class="settingsTable-Header-Modal">
+            <span>Settings</span>
+          </div>
+          <div class="settingsTable-Content-Modal" id="settingsTable-Content-Modal">
+            <div class="settingsTable-create">
+              <div>
+                <span class="settingsTable-create-span">Criar nova tabela:</span>
+                <input type="text" name="CreatTableInput" id="CreatTableInput" class="input-to-do-list" placeholder="New Table - Study" />
+              </div>
+              <div class="settingsTable-create-buttons">
+                <button id="createTable-button">Criar</button>
+              </div>
+            </div>
+          </div>
+          <div class="settingsTable-Footer-Modal">
+            <button onclick="CloseSettingsTableModal()">Close</button>
+          </div>
         </div>
+      </section>
+
+      <div class="alert-container" id="noHaveContent">
+        <section class="alert">
+          <div class="alert-tittle">
+            <h1>Import!</h1>
+          </div>
+          <div class="alert-content">
+            <p>You didn't fill in all the fields, make sure.</p>
+          </div>
+          <div class="alert-footer">
+            <button onclick="CloseAlertNoHave()">Close</button>
+          </div>
+        </section>
+      </div>
+
+      <div class="alert-container" id="DeleteItem">
+        <section class="alert">
+          <div class="alert-tittle">
+            <h1>Delete item</h1>
+          </div>
+          <div class="alert-content">
+            <p>Are you sure? This is a long time</p>
+          </div>
+          <div class="alert-footer">
+            <button id="deleteItem">Delete</button>
+            <button onclick="CloseDeleteItem()">Close</button>
+          </div>
+        </section>
+      </div>
+
+      <div class="alert-container" id="editItem">
+        <section class="alert">
+          <div class="alert-tittle">
+            <h1>Edit item</h1>
+          </div>
+          <div class="alert-content">
+            <span>Tittle:</span>
+            <input type="text" id="EditItemTittle" class="input-to-do-list" placeholder="Tittle - Clean the house" maxlength="16" minlength="3" />
+            <span>Content:</span>
+            <input type="text" id="EditItemText" class="input-to-do-list" placeholder="Content -Tidy up room" maxlength="32" minlength="3" />
+          </div>
+          <div class="alert-footer">
+            <button id="saveEdit">Save</button>
+            <button onclick="CloseEdit()">Close</button>
+          </div>
+        </section>
+      </div>
+    </section>
+
+    <footer>
+      <div>
+        <span
+          >If you have any questions, <b><a href="https://github.com/AntonioLourencos/to-do-list/blob/master/README.md">visit</a></b> our documentation, we have an answers :)</span
+        >
+        <span
+          >Page developed by: <b><a href="https://github.com/AntonioLourencos">Antonio Lourenço</a></b
+          >.</span
+        >
+      </div>
     </footer>
     <script src="/src/script/app.js"></script>
-</body>
-
+  </body>
 </html>

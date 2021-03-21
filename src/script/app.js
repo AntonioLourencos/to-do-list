@@ -1,9 +1,17 @@
-function app() {
+const WorkList = [];
+
+const app = () => {
   const ButtonAdd = document.getElementById("ButtonAdd");
+  const ButtonTableSettings = document.getElementById("tables-settings");
   ButtonAdd.addEventListener("click", GetNewItem);
+  ButtonTableSettings.addEventListener("click", TableSettings);
 }
 
-function GetNewItem() {
+const TableSettings = () => {
+  alert("em desenvolvimento");
+};
+
+const GetNewItem = () => {
   const NewItemTittle = document.getElementById("NewItemTittle");
   const NewItemDo = document.getElementById("newItem");
   if (NewItemDo.value !== "" && NewItemTittle.value !== "") {
@@ -13,10 +21,10 @@ function GetNewItem() {
   } else if (NewItemDo.value === "" || NewItemTittle.value === "") {
     OpenAlertNoHave();
   }
-}
+};
 
-function CreateNewItem(ItemDo, ItemDoTittle) {
-  const works = document.getElementById("works");
+const CreateNewItem = (ItemDo, ItemDoTittle) => {
+  const works = document.getElementById("mylist-works");
   const container = document.createElement("div");
   const myworkHeader = document.createElement("div");
   const myworkFooter = document.createElement("div");
@@ -53,10 +61,10 @@ function CreateNewItem(ItemDo, ItemDoTittle) {
     FinishWork(container, tittle, paragraph, myworkFinish);
   });
   myworkEdit.addEventListener("click", () => {
-    EditItem(tittle, paragraph);
+    EditItem(tittle, myworkContent, paragraph);
   });
   myWorkDelete.addEventListener("click", () => {
-    CheckdeleteItem(container.id);
+    CheckdeleteItem(container);
   });
 
   tittle.textContent = tittleField;
@@ -71,47 +79,53 @@ function CreateNewItem(ItemDo, ItemDoTittle) {
   myworkFooter.className = "mywork-footer";
   myworkFooter.append(paragraphFooter);
   paragraphFooter.textContent = `Created: ${time.getHours()}:${time.getMinutes()}`;
-}
+};
 
-function FinishWork(container, textTittle, text, myworkFinish) {
+const FinishWork = (container, textTittle, text, myworkFinish) => {
   let tittle = textTittle;
   let paragraph = text;
   if (myworkFinish.textContent === "Finish") {
     myworkFinish.textContent = "Back";
     tittle.className = "mywork-header mywork-finish";
     paragraph.className = "mywork-field mywork-finish";
-    container.className = "mywork-container mywork-finish-c"
+    container.className = "mywork-container mywork-finish-c";
   } else if (myworkFinish.textContent === "Back") {
     myworkFinish.textContent = "Finish";
     tittle.className = "mywork-header";
     paragraph.className = "mywork-field";
-    container.className = "mywork-container"
+    container.className = "mywork-container";
   }
-}
+};
 
-function CheckdeleteItem(props) {
-  const buttonCheckDelete = document.getElementById("delete");
-  let item = document.getElementById(props);
-  buttonCheckDelete.addEventListener("click", DeleteItem);
+const CheckdeleteItem = (props) => {
+  const button = document.getElementById("deleteItem");
+  let item = document.getElementById(props.id);
   OpenDeleteItem();
 
-  function DeleteItem() {
+  button.addEventListener("click", () => {
+    deleteItem();
+  });
+
+  const deleteItem = () => {
     item.remove();
     CloseDeleteItem();
   }
-}
+};
 
-function EditItem(tittle, paragraph) {
+const EditItem = (tittle, containerParagraph, paragraph) => {
   const ButtonSave = document.getElementById("saveEdit");
   const EditItemTittle = document.getElementById("EditItemTittle");
   const EditItemText = document.getElementById("EditItemText");
   EditItemTittle.value = tittle.textContent;
   EditItemText.value = paragraph.value;
+
   ButtonSave.addEventListener("click", () => {
     FinishEdit();
   });
+
   OpenEdit();
-  function FinishEdit() {
+
+  const FinishEdit = () => {
     if (EditItemTittle.value !== "" && EditItemText.value !== "") {
       tittle.textContent = EditItemTittle.value;
       paragraph.value = EditItemText.value;
@@ -119,33 +133,43 @@ function EditItem(tittle, paragraph) {
     } else if (EditItemTittle.value === "" || EditItemText.value === "") {
       OpenAlertNoHave();
     }
-  }
-}
+  };
+};
 
-function OpenAlertNoHave() {
+const OpenAlertNoHave = () => {
   const noHave = document.getElementById("noHaveContent");
   noHave.style.display = "flex";
   noHave.style.zIndex = "2";
-}
-function CloseAlertNoHave() {
+};
+const CloseAlertNoHave = () => {
   const noHave = document.getElementById("noHaveContent");
   noHave.style.display = "none";
-}
-function OpenDeleteItem() {
+};
+const OpenDeleteItem = () => {
   const DeleteItem = document.getElementById("DeleteItem");
   DeleteItem.style.display = "flex";
-}
-function CloseDeleteItem() {
+};
+const CloseDeleteItem = () => {
   const DeleteItem = document.getElementById("DeleteItem");
   DeleteItem.style.display = "none";
-}
-function OpenEdit() {
+};
+const OpenEdit = () => {
   const editItem = document.getElementById("editItem");
   editItem.style.display = "flex";
-}
-function CloseEdit() {
+};
+const CloseEdit = () => {
   const editItem = document.getElementById("editItem");
   editItem.style.display = "none";
-}
+};
+
+const OpenTableSettings = () => {
+  const TableSettings = document.getElementById("settingsTable-Modal");
+  TableSettings.style.display = "flex";
+};
+
+const CloseSettingsTableModal = () => {
+  const TableSettings = document.getElementById("settingsTable-Modal");
+  TableSettings.style.display = "none";
+};
 
 app();
